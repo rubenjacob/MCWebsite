@@ -1,0 +1,20 @@
+{
+  "name": "mc_exercise",
+  "version": "1.0.0",
+  "description": "Exercise for Mobile Computing Exam.",
+  "main": "index.js",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/rubenjacob/MCWebsite.git"
+  },
+  "author": "Ruben Jacob",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  },
+  "homepage": "http://rubenjacob.github.io/MCWebsite"
+}
