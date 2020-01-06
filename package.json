@@ -1,11 +1,15 @@
 {
   "name": "mc_exercise",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Exercise for Mobile Computing Exam.",
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -13,8 +17,13 @@
   },
   "author": "Ruben Jacob",
   "license": "ISC",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.3.0"
+  },
   "devDependencies": {
     "gh-pages": "^2.1.1"
   },
-  "homepage": "http://rubenjacob.github.io/MCWebsite"
+  "homepage": "http://rubenjacob.github.io/MCWebsite/"
 }
