@@ -11,6 +11,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Grid } from '@material-ui/core';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -170,42 +171,57 @@ export default class App extends React.Component {
                 <h1>Shortest Roundtrip Calculator</h1>
                 <h3>Click on the map to select up to nine places you want to go.</h3>
 
-                <FormControl>
-                    <InputLabel id="select-label">Mode of transportation</InputLabel>
-                    <Select
-                        labelId="select-label"
-                        id="mode-select"
-                        value={this.state.transportationMode}
-                        onChange={this.handleModeChange}
-                    >
-                        <MenuItem value="WALKING">Walking</MenuItem>
-                        <MenuItem value="BICYCLING">Bicycling</MenuItem>
-                        <MenuItem value="TRANSIT">Public Transit</MenuItem>
-                        <MenuItem value="DRIVING">Driving</MenuItem>
-                    </Select>
-                </FormControl>
+                <Grid container justify='center' className='classes.root' spacing={2}>
+                    <Grid item xs={2}>
+                        <FormControl fullWidth='true'>
+                        <InputLabel id="select-label">Mode of transportation</InputLabel>
+                        <Select
+                            labelId="select-label"
+                            id="mode-select"
+                            value={this.state.transportationMode}
+                            onChange={this.handleModeChange}
+                        >
+                            <MenuItem value="WALKING">Walking</MenuItem>
+                            <MenuItem value="BICYCLING">Bicycling</MenuItem>
+                            <MenuItem value="TRANSIT">Public Transit</MenuItem>
+                            <MenuItem value="DRIVING">Driving</MenuItem>
+                        </Select>
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Grid container justify='center' spacing={2}>
+                            <Grid item>
+                                <Button 
+                                    variant="contained" 
+                                    color="primary" 
+                                    onClick={this.onCalculate}
+                                >
+                                    {this.state.calculated ? 'Recalculate' : 'Calculate'}
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button 
+                                    variant="contained" 
+                                    color="primary" 
+                                    onClick={this.onClear}
+                                    disabled={!this.state.places === []}
+                                >
+                                    Clear
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <MapContainer
+                            handleAdd={this.handleAdd}
+                            handleRemove={this.handleRemove}
+                            places={this.state.places}
+                            calculated={this.state.calculated}
+                        />
+                    </Grid>
+                </Grid>
 
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    onClick={this.onCalculate}
-                    disabled={this.state.calculated}>
-                    Calculate
-                </Button>
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    onClick={this.onClear}
-                    disabled={!this.state.calculated}>
-                    Clear
-                </Button>
-
-                <MapContainer
-                    handleAdd={this.handleAdd}
-                    handleRemove={this.handleRemove}
-                    places={this.state.places}
-                    calculated={this.state.calculated}
-                />
+                
 
                 <Dialog
                     open={this.state.warningOpen}

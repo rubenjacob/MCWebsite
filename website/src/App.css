@@ -1,8 +1,5 @@
 .App {
   text-align: center;
   background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color:  #282c34;
 }
